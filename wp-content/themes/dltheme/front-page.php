@@ -1,170 +1,8 @@
 <?php get_header(); ?>
 
-<div class="progress"><div class="progress__bar"></div></div>
-    <!-- Google Tag Manager (noscript) -->
-<div class="body-wrapper">
-  <aside class="sidebar">
-    <div class="container sidebar__container">
-      <div class="row">
-        <div class="col-12 flex flex-justify-between flex-align-center">
-          <a href="/">
-            <picture
-              class="render-image flex flex-align-center flex-justify-center picture-image- sidebar__logo"
-            >
-              <source
-                type="image/svg+xml"
-                data-srcset="https://pokieslab.net/wp-content/uploads/pokieslab.svg"
-              />
-              <img
-                alt="logo"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                width="158"
-                height="40"
-                class="lazy sidebar__logo"
-                data-original="https://pokieslab.net/wp-content/uploads/pokieslab.svg"
-              />
-            </picture>
-            <noscript
-              ><img
-                alt="logo"
-                src="https://pokieslab.net/wp-content/uploads/pokieslab.svg"
-                width="158"
-                height="40"
-                class="lazy sidebar__logo"
-            /></noscript>
-          </a>
-          <i id="sidebar-close" class="fa-cancel sidebar__close-button"></i>
-        </div>
-        <div class="col-12">
-          <ul
-            id="menu-header-menu"
-            class="menu sidebar-mobile-menu flex flex-column flex-align-center"
-          >
-            <li
-              id="menu-item-2137"
-              class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2137"
-            >
-              <a href="https://pokieslab.net/real-money-pokies/"
-                >Real Money Pokies</a
-              >
-            </li>
-            <li
-              id="menu-item-608"
-              class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-608"
-            >
-              <a href="https://pokieslab.net/free-online-pokies/"
-                >Free Pokies</a
-              >
-            </li>
-            <li
-              id="menu-item-6652"
-              class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-6652"
-            >
-              <span>Software Providers</span>
-              <ul class="sub-menu">
-                <li
-                  id="menu-item-6653"
-                  class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6653"
-                >
-                  <a href="https://pokieslab.net/aristocrat/">Aristocrat</a>
-                </li>
-                <li
-                  id="menu-item-6507"
-                  class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6507"
-                >
-                  <a href="https://pokieslab.net/ainsworth/">Ainsworth</a>
-                </li>
-                <li
-                  id="menu-item-6508"
-                  class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6508"
-                >
-                  <a href="https://pokieslab.net/bally/">Bally</a>
-                </li>
-                <li
-                  id="menu-item-6509"
-                  class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6509"
-                >
-                  <a href="https://pokieslab.net/igt/">IGT</a>
-                </li>
-              </ul>
-            </li>
-            <li
-              id="menu-item-6644"
-              class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-6644"
-            >
-              <a href="https://pokieslab.net/online-casinos/"
-                >Online Casinos</a
-              >
-              <ul class="sub-menu">
-                <li
-                  id="menu-item-7161"
-                  class="menu-item menu-item-type-post_type menu-item-object-post menu-item-7161"
-                >
-                  <a href="https://pokieslab.net/online-casinos/staycasino/"
-                    >StayCasino</a
-                  >
-                </li>
-                <li
-                  id="menu-item-6823"
-                  class="menu-item menu-item-type-post_type menu-item-object-post menu-item-6823"
-                >
-                  <a
-                    href="https://pokieslab.net/online-casinos/spin-samurai/"
-                    >Spin Samurai</a
-                  >
-                </li>
-                <li
-                  id="menu-item-9465"
-                  class="menu-item menu-item-type-post_type menu-item-object-post menu-item-9465"
-                >
-                  <a
-                    href="https://pokieslab.net/online-casinos/slotman-casino/"
-                    >Slotman</a
-                  >
-                </li>
-                <li
-                  id="menu-item-6916"
-                  class="menu-item menu-item-type-post_type menu-item-object-post menu-item-6916"
-                >
-                  <a href="https://pokieslab.net/online-casinos/playamo/"
-                    >PlayAmo</a
-                  >
-                </li>
-                <li
-                  id="menu-item-7313"
-                  class="menu-item menu-item-type-post_type menu-item-object-post menu-item-7313"
-                >
-                  <a href="https://pokieslab.net/online-casinos/national/"
-                    >National</a
-                  >
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <div
-            class="sidebar-provider-mobile--list navigation-search navigation-search-mobile"
-          >
-            <i class="fa-search"></i>
-            <input
-              type="text"
-              class="search-pok"
-              id="headSeach_sidebar-select"
-              placeholder="Search"
-              minlength="1"
-              required
-              data-autocomplete-on
-              data-action="autocomplete_slots"
-              data-target-selector="navigation-search"
-              data-clear-selector=".search-form-input-clear"
-              autocomplete="off"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </aside>
-  <header class="header">
-    <?php include(TEMPLATEPATH.'/blocks/header-menu.php'); ?>
+
+  <!-- done -->
+  <section class="hero">
     <div class="header-bn">
       <div class="gradient gradient-top">
         <div class="gradient-background"></div>
@@ -190,24 +28,41 @@
               machine games with amazing jackpot lists, RTP rates, and
               attractive bonus features on PokiesLAB! 😃
             </p>
-            <button class="header__button button__primary-2">
-              <a
-                href="https://pokieslab.net/real-money-pokies/"
-                style="
-                  display: flex;
-                  text-decoration: none;
-                  color: inherit;
-                  justify-content: center;
-                  align-items: center;
-                "
-                ><i class="fa-left-arrow"></i>Real Money Pokies</a
-              >
-            </button>
+            <div class="real-money-header__actions">
+                <button class="header__button button__primary-2">
+                  <a
+                    href="https://pokieslab.net/real-money-pokies/"
+                    style="
+                      display: flex;
+                      text-decoration: none;
+                      color: inherit;
+                      justify-content: center;
+                      align-items: center;
+                    "
+                    ><i class="fa-left-arrow"></i>Real Money Pokies</a
+                  >
+                </button>
+                <button class="header__button button__primary-2">
+                  <a
+                    href="https://pokieslab.net/real-money-pokies/"
+                    style="
+                      display: flex;
+                      text-decoration: none;
+                      color: inherit;
+                      justify-content: center;
+                      align-items: center;
+                    "
+                    ><i class="fa-left-arrow"></i>Real Money Pokies</a
+                  >
+                </button>
+              </div>
           </div>
         </div>
       </div>
     </div>
-  </header>
+  </section>
+  <!-- done -->
+
   <div class="after-header-block">
     <div class="container header__conbest-online-pokiestainer">
       <div class="row best-online-pokies">

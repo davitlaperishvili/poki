@@ -1,43 +1,57 @@
 
    <?php  
         $heroTitle = get_sub_field('hero_title'); 
-        $heroSubTitle = get_sub_field('hero_subtitle'); 
-        $heroLicense = get_sub_field('hero_license'); 
-        $heroImage = get_sub_field('hero_image'); 
-        $heroBg = get_sub_field('hero_background_image'); 
-        $hero_first_button_text = get_sub_field('hero_first_button_text');
-        $hero_first_button_url = get_sub_field('hero_first_button_url');
-        $hero_second_button_text = get_sub_field('hero_second_button_text');
-        $hero_second_button_url = get_sub_field('hero_second_button_url');
+        $heroText = get_sub_field('hero_text'); 
+        $heroButtons = get_sub_field('hero_buttons'); 
+        $hideOnDesktop = get_sub_field('hide_on_desktop'); 
+        $heroBg = get_sub_field('hero_bg'); 
+        $overlayNextBlock = get_sub_field('overlay_next_block');
+        
         $rowIndex = get_row_index();
     ?>
     
-    <section class="hero" id="content<?php echo $rowIndex ?>">
-    
-        <figure>
-            <img src="<?php echo $heroBg['url'] ?>" alt="<?php echo $heroBg['alt'] ?>">
-        </figure>
-        <div class="container">
-            <div class="hero_content">
-                <div class="hero_left">
-                    <div class="subtitle"><?php echo $heroSubTitle ?></div>
-                    <h1 class="page_title"><?php echo $heroTitle ?></h1>
-                    <div class="license"><?php echo $heroLicense ?></div>
-                    <div class="hero_buttons">
-                        <div class="theme_button">
-                            <a href="<?php echo $hero_first_button_url ?>"><?php echo $hero_first_button_text ?></a>
-                        </div>
-                        <div class="theme_button white">
-                            <a href="<?php echo $hero_second_button_url ?>"><?php echo $hero_second_button_text ?></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero_right">
-                    <figure>
-                        <img src="<?php echo $heroImage['url'] ?>" alt="<?php echo $heroImage['alt'] ?>">
-                    </figure>
-                </div>
-            </div>
+    <section class="hero <?php echo $overlayNextBlock ? "" : "header-page" ?>" id="content<?php echo $rowIndex ?>" style="position: relative; z-index: -1;">
+      <div class="header-bn">
+        <div class="gradient gradient-top">
+          <div class="gradient-background" style="background: linear-gradient(90deg,<?php echo $heroBg['gradient_start'] ?>,<?php echo $heroBg['gradient_end'] ?>)"></div>
+          <div class="gradient-left-side" style="background-image: url(<?php echo $heroBg['bg_left_image']['url'] ?>);"></div>
+          <div class="gradient-right-side" style="background-image: url(<?php echo $heroBg['bg_right_image']['url'] ?>);"></div>
+          <div class="gradient-main all" style="background-image: url(<?php echo $heroBg['bg_main_image']['url'] ?>);"></div>
         </div>
+        <div class="container header__conbest-online-pokiestainer">
+          <div class="row">
+            <div class="col-12 header__title">
+              <h1 class="header__title">
+                <?php echo $heroTitle ?>
+              </h1>
+            </div>
+            <div class="col-12 col-lg-7 header__info">
+              <p class="header__text"><?php echo $heroText ?></p>
+              <div class="<?php echo $hideOnDesktop ? "real-money-header__actions" : "" ?>">
+                <?php 
+                  foreach($heroButtons as $btn) {
+                    $btnStyle = $btn['style'];
+                    ?>
+                      <button class="header__button <?php echo $btnStyle ?>">
+                        <a
+                          href="<?php echo $btn['url'] ?>"
+                          style="
+                            display: flex;
+                            text-decoration: none;
+                            color: inherit;
+                            justify-content: center;
+                            align-items: center;
+                          "
+                          ><i class="fa-left-arrow"></i><?php echo $btn['title'] ?></a
+                        >
+                      </button>
+                    <?php
+                  }
+                ?>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 

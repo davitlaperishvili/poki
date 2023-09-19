@@ -16,3 +16,12 @@
 	$phone = preg_replace("/[^0-9]/", "", $phoneVisible);
 	$email = get_field('email', 'option');
 ?>
+<div class="progress"><div class="progress__bar"></div></div>
+    <!-- Google Tag Manager (noscript) -->
+<div class="body-wrapper" style="isolation: isolate;">
+
+<?php include(TEMPLATEPATH.'/blocks/sidebar.php'); ?>
+<header class="header">
+  <?php include(TEMPLATEPATH.'/blocks/header-menu.php'); ?>
+  
+</header>
