@@ -4,6 +4,7 @@
         $white_title = get_sub_field('white_title'); 
         $casinos_list_config = get_sub_field('casinos_list_config'); 
         $casinos_list = get_sub_field('casinos_list');  
+        $section_button = get_sub_field('section_button');  
         $rowIndex = get_row_index();
 
 
@@ -23,11 +24,12 @@
                 <?php 
                   foreach($casinos_list as $casino) {
                     $casinoID = $casino->ID;
+                    $casinoInfo = get_the_post_meta($casinoID, "casino_info", true);
                     ?>
                       <div class="casino-table-item flex flex-justify-between flex-align-stretch">
                         <div class="casino-table-item-image flex flex-align-center flex-justify-center" style="background-color: #01281d">
                           <picture class="render-image flex flex-align-center flex-justify-center picture-image- casino-table-item-image-img">
-                            <source type="image/svg+xml" data-srcset="https://pokieslab.net/wp-content/uploads/richard-casino200x150.svg" />
+                            <source type="image/svg+xml" data-srcset="<?php echo get_the_post_thumbnail_url($casinoID) ?>" />
                             <img
                               alt=""
                               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
@@ -35,13 +37,13 @@
                               height="150"
                               title="richard-casino200x150"
                               class="lazy casino-table-item-image-img"
-                              data-original="https://pokieslab.net/wp-content/uploads/richard-casino200x150.svg"
+                              data-original="<?php echo get_the_post_thumbnail_url($casinoID) ?>"
                             />
                           </picture>
                           <noscript>
                             <img
                               alt=""
-                              src="https://pokieslab.net/wp-content/uploads/richard-casino200x150.svg"
+                              src="<?php echo get_the_post_thumbnail_url($casinoID) ?>"
                               width="200"
                               height="150"
                               title="richard-casino200x150"
@@ -52,41 +54,41 @@
                         <div class="casino-table-item-description-cover flex flex-align-stretch flex-justify-between">
                           <div class="casino-table-item-description-info flex flex-direction-column flex-align-stretch flex-justify-center">
                             <div class="flex flex-align-stretch flex-justify-start flex-direction-column">
-                              <div class="casino-table-item-title">AU$5000 + 300 Free Spins</div>
+                              <div class="casino-table-item-title"><?php echo $casinoInfo['title'] ?></div>
                               <div class="casino-table-item-info flex flex-align-stretch flex-justify-start flex-wrap">
                                 <div class="casino-table-item-info-element flex flex-align-start flex-justify-start">
                                   <picture class="render-image flex flex-align-center flex-justify-center picture-image-">
-                                    <source type="image/svg+xml" data-srcset="https://pokieslab.net/wp-content/themes/pokieslab/images/icons/icon-slot-machine.svg" />
+                                    <source type="image/svg+xml" data-srcset="<?php echo $casinoInfo['item1_image']['url'] ?>" />
                                     <img
                                       alt="slot-machine"
                                       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
                                       width="35"
                                       height="35"
                                       class="lazy"
-                                      data-original="https://pokieslab.net/wp-content/themes/pokieslab/images/icons/icon-slot-machine.svg"
+                                      data-original="<?php echo $casinoInfo['item1_image']['url'] ?>"
                                     />
                                   </picture>
                                   <noscript>
-                                    <img alt="slot-machine" src="https://pokieslab.net/wp-content/themes/pokieslab/images/icons/icon-slot-machine.svg" width="35" height="35" class="lazy" />
+                                    <img alt="slot-machine" src="<?php echo $casinoInfo['item1_image']['url'] ?>" width="35" height="35" class="lazy" />
                                   </noscript>
-                                  <p>3510 Online Pokies</p>
+                                  <p><?php echo $casinoInfo['item1_value'] ?></p>
                                 </div>
                                 <div class="casino-table-item-info-element flex flex-align-start flex-justify-start">
                                   <picture class="render-image flex flex-align-center flex-justify-center picture-image-">
-                                    <source type="image/svg+xml" data-srcset="https://pokieslab.net/wp-content/themes/pokieslab/images/icons/icon-present.svg" />
+                                    <source type="image/svg+xml" data-srcset="<?php echo $casinoInfo['item2_image']['url'] ?>" />
                                     <img
                                       alt="gift-box"
                                       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
                                       width="35"
                                       height="35"
                                       class="lazy"
-                                      data-original="https://pokieslab.net/wp-content/themes/pokieslab/images/icons/icon-present.svg"
+                                      data-original="<?php echo $casinoInfo['item2_image']['url'] ?>"
                                     />
                                   </picture>
                                   <noscript>
-                                    <img alt="gift-box" src="https://pokieslab.net/wp-content/themes/pokieslab/images/icons/icon-present.svg" width="35" height="35" class="lazy" />
+                                    <img alt="gift-box" src="<?php echo $casinoInfo['item2_image']['url'] ?>" width="35" height="35" class="lazy" />
                                   </noscript>
-                                  <p>Cashback up to 20%</p>
+                                  <p><?php echo $casinoInfo['item2_value'] ?></p>
                                 </div>
                               </div>
                             </div>
@@ -95,15 +97,15 @@
                             <div class="flex flex-align-stretch flex-justify-start flex-direction-column">
                               <button class="casino-table-item-description-button-item button__primary-3">
                                 <a
-                                  href="https://pokieslab.net/go/richard-casino/"
+                                  href="<?php echo $casinoInfo['casino_button']['url'] ?>"
                                   target="_blank"
                                   rel="nofollow noopener"
                                   style="display: flex; text-decoration: none; color: inherit; justify-content: center; align-items: center"
-                                  >PLAY NOW</a
+                                  ><?php echo $casinoInfo['casino_button']['title'] ?></a
                                 >
                               </button>
                               <div class="casino-table-item-description-button-item-more-info">
-                                <span>Richard Casino</span>
+                                <span><?php echo $casinoInfo['casino_name'] ?></span>
                               </div>
                             </div>
                           </div>
@@ -128,11 +130,12 @@
                 <?php 
                   foreach($casinoPosts as $casino) {
                     $casinoID = $casino->ID;
+                    $casinoInfo = get_the_post_meta($casinoID, "casino_info", true);
                     ?>
                       <div class="casino-table-item flex flex-justify-between flex-align-stretch">
                         <div class="casino-table-item-image flex flex-align-center flex-justify-center" style="background-color: #01281d">
                           <picture class="render-image flex flex-align-center flex-justify-center picture-image- casino-table-item-image-img">
-                            <source type="image/svg+xml" data-srcset="https://pokieslab.net/wp-content/uploads/richard-casino200x150.svg" />
+                            <source type="image/svg+xml" data-srcset="<?php echo get_the_post_thumbnail_url($casinoID) ?>" />
                             <img
                               alt=""
                               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
@@ -140,13 +143,13 @@
                               height="150"
                               title="richard-casino200x150"
                               class="lazy casino-table-item-image-img"
-                              data-original="https://pokieslab.net/wp-content/uploads/richard-casino200x150.svg"
+                              data-original="<?php echo get_the_post_thumbnail_url($casinoID) ?>"
                             />
                           </picture>
                           <noscript>
                             <img
                               alt=""
-                              src="https://pokieslab.net/wp-content/uploads/richard-casino200x150.svg"
+                              src="<?php echo get_the_post_thumbnail_url($casinoID) ?>"
                               width="200"
                               height="150"
                               title="richard-casino200x150"
@@ -157,41 +160,41 @@
                         <div class="casino-table-item-description-cover flex flex-align-stretch flex-justify-between">
                           <div class="casino-table-item-description-info flex flex-direction-column flex-align-stretch flex-justify-center">
                             <div class="flex flex-align-stretch flex-justify-start flex-direction-column">
-                              <div class="casino-table-item-title">AU$5000 + 300 Free Spins</div>
+                              <div class="casino-table-item-title"><?php echo $casinoInfo['title'] ?></div>
                               <div class="casino-table-item-info flex flex-align-stretch flex-justify-start flex-wrap">
                                 <div class="casino-table-item-info-element flex flex-align-start flex-justify-start">
                                   <picture class="render-image flex flex-align-center flex-justify-center picture-image-">
-                                    <source type="image/svg+xml" data-srcset="https://pokieslab.net/wp-content/themes/pokieslab/images/icons/icon-slot-machine.svg" />
+                                    <source type="image/svg+xml" data-srcset="<?php echo $casinoInfo['item1_image']['url'] ?>" />
                                     <img
                                       alt="slot-machine"
                                       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
                                       width="35"
                                       height="35"
                                       class="lazy"
-                                      data-original="https://pokieslab.net/wp-content/themes/pokieslab/images/icons/icon-slot-machine.svg"
+                                      data-original="<?php echo $casinoInfo['item1_image']['url'] ?>"
                                     />
                                   </picture>
                                   <noscript>
-                                    <img alt="slot-machine" src="https://pokieslab.net/wp-content/themes/pokieslab/images/icons/icon-slot-machine.svg" width="35" height="35" class="lazy" />
+                                    <img alt="slot-machine" src="<?php echo $casinoInfo['item1_image']['url'] ?>" width="35" height="35" class="lazy" />
                                   </noscript>
-                                  <p>3510 Online Pokies</p>
+                                  <p><?php echo $casinoInfo['item1_value'] ?></p>
                                 </div>
                                 <div class="casino-table-item-info-element flex flex-align-start flex-justify-start">
                                   <picture class="render-image flex flex-align-center flex-justify-center picture-image-">
-                                    <source type="image/svg+xml" data-srcset="https://pokieslab.net/wp-content/themes/pokieslab/images/icons/icon-present.svg" />
+                                    <source type="image/svg+xml" data-srcset="<?php echo $casinoInfo['item2_image']['url'] ?>" />
                                     <img
                                       alt="gift-box"
                                       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
                                       width="35"
                                       height="35"
                                       class="lazy"
-                                      data-original="https://pokieslab.net/wp-content/themes/pokieslab/images/icons/icon-present.svg"
+                                      data-original="<?php echo $casinoInfo['item2_image']['url'] ?>"
                                     />
                                   </picture>
                                   <noscript>
-                                    <img alt="gift-box" src="https://pokieslab.net/wp-content/themes/pokieslab/images/icons/icon-present.svg" width="35" height="35" class="lazy" />
+                                    <img alt="gift-box" src="<?php echo $casinoInfo['item2_image']['url'] ?>" width="35" height="35" class="lazy" />
                                   </noscript>
-                                  <p>Cashback up to 20%</p>
+                                  <p><?php echo $casinoInfo['item2_value'] ?></p>
                                 </div>
                               </div>
                             </div>
@@ -200,15 +203,15 @@
                             <div class="flex flex-align-stretch flex-justify-start flex-direction-column">
                               <button class="casino-table-item-description-button-item button__primary-3">
                                 <a
-                                  href="https://pokieslab.net/go/richard-casino/"
+                                  href="<?php echo $casinoInfo['casino_button']['url'] ?>"
                                   target="_blank"
                                   rel="nofollow noopener"
                                   style="display: flex; text-decoration: none; color: inherit; justify-content: center; align-items: center"
-                                  >PLAY NOW</a
+                                  ><?php echo $casinoInfo['casino_button']['title'] ?></a
                                 >
                               </button>
                               <div class="casino-table-item-description-button-item-more-info">
-                                <span>Richard Casino</span>
+                                <span><?php echo $casinoInfo['casino_name'] ?></span>
                               </div>
                             </div>
                           </div>
@@ -223,17 +226,17 @@
         ?>
         
         <?php 
-          if($casinos_list_config['choose_casinos'] == "all" && $casinos_list_config['ajax_load']){
+          if($casinos_list_config['choose_casinos'] != "all" ){
             ?>
               <div class="col-12 best-australian-online-pokies-real-money__link-button flex flex-justify-center">
                 <button class="button__secondary-1 color-basic-1">
-                  <a href="https://pokieslab.net/real-money-pokies/" style="
+                  <a href="<?php echo $section_button['url'] ?>" style="
                       display: flex;
                       text-decoration: none;
                       color: inherit;
                       justify-content: center;
                       align-items: center;
-                    ">Show More...</a>
+                    "><?php echo $section_button['title'] ?></a>
                 </button>
               </div>
             <?php
