@@ -14,7 +14,7 @@
       <div class="container header__container">
         <div class="row flex-justify-center">
           <div class="col-12 flex flex-justify-start flex-align-center">
-            <h3 class=" <?php echo $white_title ? "online-casino-real-money__title" : "best-australian-online-pokies-real-money__title" ?>"><?php echo $section_title ?></h3>
+            <h2 class=" <?php echo $white_title ? "online-casino-real-money__title" : "best-australian-online-pokies-real-money__title" ?>"><?php echo $section_title ?></h2>
           </div>
         </div>
         <?php 
@@ -24,10 +24,10 @@
                 <?php 
                   foreach($casinos_list as $casino) {
                     $casinoID = $casino->ID;
-                    $casinoInfo = get_the_post_meta($casinoID, "casino_info", true);
+                    $casinoInfo = get_field("casino_info", $casinoID);
                     ?>
                       <div class="casino-table-item flex flex-justify-between flex-align-stretch">
-                        <div class="casino-table-item-image flex flex-align-center flex-justify-center" style="background-color: #01281d">
+                        <div class="casino-table-item-image flex flex-align-center flex-justify-center" style="background-color: <?php echo $casinoInfo['casino_image_bg_color'] ?>">
                           <picture class="render-image flex flex-align-center flex-justify-center picture-image- casino-table-item-image-img">
                             <source type="image/svg+xml" data-srcset="<?php echo get_the_post_thumbnail_url($casinoID) ?>" />
                             <img
@@ -118,22 +118,24 @@
             <?php
           }
           if($casinos_list_config['choose_casinos'] == "all"){
-            $pagedCasino = (get_query_var('paged')) ? get_query_var('paged') : 1;
-            $argsCasino = array('post_type' => 'casino', 'posts_per_page' => 6, 'paged' => $pagedCasino );
-            $post_type_data_casino = new WP_Query($args);
-            $casinoPosts = $post_type_data_casino->posts;
-            // var_dump($slotPosts);
-            // var_dump($post_type_data);
-            set_query_var('page',$pagedCasino);
+            $casinoPosts = get_posts( array(
+              'numberposts' => -1,
+              'post_type'   => 'casinos',
+              'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+            ) );
+            
+            global $post;
+            
             ?>
               <div class="casino-table-items">
                 <?php 
                   foreach($casinoPosts as $casino) {
+                    setup_postdata( $casino );
                     $casinoID = $casino->ID;
-                    $casinoInfo = get_the_post_meta($casinoID, "casino_info", true);
+                    $casinoInfo = get_field("casino_info", $casinoID);
                     ?>
                       <div class="casino-table-item flex flex-justify-between flex-align-stretch">
-                        <div class="casino-table-item-image flex flex-align-center flex-justify-center" style="background-color: #01281d">
+                        <div class="casino-table-item-image flex flex-align-center flex-justify-center" style="background-color: <?php echo $casinoInfo['casino_image_bg_color'] ?>">
                           <picture class="render-image flex flex-align-center flex-justify-center picture-image- casino-table-item-image-img">
                             <source type="image/svg+xml" data-srcset="<?php echo get_the_post_thumbnail_url($casinoID) ?>" />
                             <img
@@ -222,6 +224,7 @@
                 ?>
               </div>
             <?php
+            wp_reset_postdata();
           }
         ?>
         
