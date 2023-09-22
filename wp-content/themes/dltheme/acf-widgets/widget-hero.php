@@ -13,10 +13,10 @@
     <section class="hero <?php echo $overlayNextBlock ? "" : "header-page" ?>" id="content<?php echo $rowIndex ?>" style="position: relative; z-index: -1;">
       <div class="header-bn">
         <div class="gradient gradient-top">
-          <div class="gradient-background" style="background: linear-gradient(90deg,<?php echo $heroBg['gradient_start'] ? $heroBg['gradient_start'] : "#f5bf5d" ?>,<?php echo $heroBg['gradient_end'] ? $heroBg['gradient_end'] : "#e74c62" ?>)"></div>
-          <div class="gradient-left-side" style="background-image: url(<?php echo $heroBg['bg_left_image'] && $heroBg['bg_left_image']['url'] || "" ?>);"></div>
-          <div class="gradient-right-side" style="background-image: url(<?php echo $heroBg['bg_right_image'] && $heroBg['bg_right_image']['url'] || "" ?>);"></div>
-          <div class="gradient-main all" style="background-image: url(<?php echo $heroBg['bg_main_image'] && $heroBg['bg_main_image']['url'] || "" ?>);"></div>
+          <div class="gradient-background" style="background: linear-gradient(90deg,<?php echo $heroBg['gradient_start'] ? $heroBg['gradient_start'] : "var(--themeGradStart)" ?>,<?php echo $heroBg['gradient_end'] ? $heroBg['gradient_end'] : "var(--themeGradEnd)" ?>)"></div>
+          <div class="gradient-left-side" style="background-image: url(<?php echo $heroBg['bg_left_image'] && $heroBg['bg_left_image']['url'] ? $heroBg['bg_left_image']['url'] : "" ?>);"></div>
+          <div class="gradient-right-side" style="background-image: url(<?php echo $heroBg['bg_right_image'] && $heroBg['bg_right_image']['url'] ? $heroBg['bg_right_image']['url'] : "" ?>);"></div>
+          <div class="gradient-main all" style="background-image: url(<?php echo $heroBg['bg_main_image'] && $heroBg['bg_main_image']['url'] ? $heroBg['bg_main_image']['url'] : "" ?>);"></div>
         </div>
         <div class="container header__conbest-online-pokiestainer">
           <div class="row">

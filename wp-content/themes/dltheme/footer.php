@@ -1,5 +1,16 @@
+<?php 
+  $phoneVisible = get_field('phone_number', 'option');
+  $phone = preg_replace("/[^0-9]/", "", $phoneVisible);
+  $email = get_field('email', 'option');
+  $theme_gradient_start = get_field('theme_gradient_start', 'option');
+  $theme_gradient_end = get_field('theme_gradient_end', 'option');
+  $site_logo = get_field('site_logo', 'option');
+  $menu_columns = get_field('menu_columns', 'option');
+  $copyright = get_field('copyright', 'option');
+  $footer_images = get_field('footer_images', 'option');
+?>
 <div class="footer-wrapper">
-  <footer class="footer">
+  <footer class="footer" style="background-image: linear-gradient(90deg,var(--themeGradStart),var(--themeGradEnd));">
     <div class="footer__scroll-top-button-cover">
       <button
         class="footer__scroll-top-button flex flex-justify-center flex-align-center"
@@ -16,88 +27,40 @@
             <div
               class="footer-menu-cover-menus flex flex-align-start flex-justify-between flex-wrap"
             >
-              <div class="footer-menu count-2">
-                <div
-                  class="footer-menu-title flex flex-align-center flex-justify-between"
-                >
-                  <span>Online pokies Australia:</span>
-                </div>
-                <ul
-                  id="menu-online-pokies-australia"
-                  class="menu menu-footer flex flex-align-stretch flex-justify-center flex-wrap"
-                >
-                  <li
-                    id="menu-item-6945"
-                    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-6945"
-                  >
-                    <a
-                      href="https://pokieslab.net/free-online-pokies/dragon-link/"
-                      >Dragon Link</a
-                    >
-                  </li>
-                  <li
-                    id="menu-item-8363"
-                    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-8363"
-                  >
-                    <a
-                      href="https://pokieslab.net/free-online-pokies/lightning-link/"
-                      >Lightning Link</a
-                    >
-                  </li>
-                  <li
-                    id="menu-item-8364"
-                    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-8364"
-                  >
-                    <a
-                      href="https://pokieslab.net/free-online-pokies/wheres-the-gold/"
-                      >Where&#8217;s The Gold</a
-                    >
-                  </li>
-                  <li
-                    id="menu-item-8365"
-                    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-8365"
-                  >
-                    <a
-                      href="https://pokieslab.net/free-online-pokies/indian-dreaming/"
-                      >Indian Dreaming</a
-                    >
-                  </li>
-                </ul>
-              </div>
-              <div class="footer-menu count-2">
-                <div
-                  class="footer-menu-title flex flex-align-center flex-justify-between"
-                >
-                  <span>Info:</span>
-                </div>
-                <ul
-                  id="menu-info"
-                  class="menu menu-footer flex flex-align-stretch flex-justify-center flex-wrap"
-                >
-                  <li
-                    id="menu-item-4393"
-                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4393"
-                  >
-                    <a href="https://pokieslab.net/about-us/">About Us</a>
-                  </li>
-                  <li
-                    id="menu-item-4392"
-                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4392"
-                  >
-                    <a href="https://pokieslab.net/cookies-policy/"
-                      >Cookies Policy</a
-                    >
-                  </li>
-                  <li
-                    id="menu-item-4391"
-                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4391"
-                  >
-                    <a href="https://pokieslab.net/responsible-gambling/"
-                      >Responsible Gambling</a
-                    >
-                  </li>
-                </ul>
-              </div>
+              <?php 
+                foreach($menu_columns as $column) {
+                  ?>
+                    <div class="footer-menu count-2">
+                      <div
+                        class="footer-menu-title flex flex-align-center flex-justify-between"
+                      >
+                        <span><?php echo $column['column_title'] ?></span>
+                      </div>
+                      <ul
+                        id="menu-online-pokies-australia"
+                        class="menu menu-footer flex flex-align-stretch flex-justify-center flex-wrap"
+                      >
+                      <?php 
+                        foreach($column['column_items'] as $item ){
+                          ?>
+                            <li
+                              id="menu-item-6945"
+                              class="menu-item menu-item-type-post_type menu-item-object-post menu-item-6945"
+                            >
+                              <a
+                                href="<?php echo $item['menu_item']['url'] ?>"
+                                ><?php echo $item['menu_item']['title'] ?></a
+                              >
+                            </li>
+                          <?php
+                        }
+                      ?>
+                        
+                      </ul>
+                    </div>
+                  <?php
+                }
+              ?>
             </div>
           </div>
           <div class="footer-logo">
@@ -106,21 +69,21 @@
             >
               <source
                 type="image/svg+xml"
-                data-srcset="https://pokieslab.net/wp-content/uploads/pokieslab-white.svg"
+                data-srcset="<?php echo $site_logo['url'] ?>"
               />
               <img
-                alt="logo"
+                alt="<?php echo $site_logo['alt'] ?>"
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
                 width="270"
                 height="59"
                 class="lazy"
-                data-original="https://pokieslab.net/wp-content/uploads/pokieslab-white.svg"
+                data-original="<?php echo $site_logo['url'] ?>"
               />
             </picture>
             <noscript
               ><img
                 alt="logo"
-                src="https://pokieslab.net/wp-content/uploads/pokieslab-white.svg"
+                src="<?php echo $site_logo['url'] ?>"
                 width="270"
                 height="59"
                 class="lazy"
@@ -134,133 +97,41 @@
           >
             <div class="footer-copyrights-text">
               <p class="copyright__text">
-                Copyright © 2019 - 2023, pokieslab.net
+                <?php echo $copyright ?>
               </p>
             </div>
             <div class="footer-copyrights-images-cover">
               <div
                 class="footer-copyrights-images flex flex-align-center flex-justify-center flex-wrap"
               >
-                <picture
-                  class="render-image flex flex-align-center flex-justify-center picture-image-"
-                >
-                  <source
-                    type="image/png"
-                    data-srcset="https://pokieslab.net/wp-content/themes/pokieslab/img/gamcare.png"
-                  />
-                  <img
-                    alt="gamcare"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                    width="126"
-                    height="24"
-                    class="lazy"
-                    data-original="https://pokieslab.net/wp-content/themes/pokieslab/img/gamcare.png"
-                  />
-                </picture>
-                <noscript
-                  ><img
-                    alt="gamcare"
-                    src="https://pokieslab.net/wp-content/themes/pokieslab/img/gamcare.png"
-                    width="126"
-                    height="24"
-                    class="lazy"
-                /></noscript>
-                <picture
-                  class="render-image flex flex-align-center flex-justify-center picture-image-"
-                >
-                  <source
-                    type="image/png"
-                    data-srcset="https://pokieslab.net/wp-content/themes/pokieslab/img/gamblingAware.png"
-                  />
-                  <img
-                    alt="gamblingAware"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                    width="180"
-                    height="22"
-                    class="lazy"
-                    data-original="https://pokieslab.net/wp-content/themes/pokieslab/img/gamblingAware.png"
-                  />
-                </picture>
-                <noscript
-                  ><img
-                    alt="gamblingAware"
-                    src="https://pokieslab.net/wp-content/themes/pokieslab/img/gamblingAware.png"
-                    width="180"
-                    height="22"
-                    class="lazy"
-                /></noscript>
-                <picture
-                  class="render-image flex flex-align-center flex-justify-center picture-image-"
-                >
-                  <source
-                    type="image/png"
-                    data-srcset="https://pokieslab.net/wp-content/themes/pokieslab/img/age-limit.png"
-                  />
-                  <img
-                    alt="age-limit"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                    width="24"
-                    height="24"
-                    class="lazy"
-                    data-original="https://pokieslab.net/wp-content/themes/pokieslab/img/age-limit.png"
-                  />
-                </picture>
-                <noscript
-                  ><img
-                    alt="age-limit"
-                    src="https://pokieslab.net/wp-content/themes/pokieslab/img/age-limit.png"
-                    width="24"
-                    height="24"
-                    class="lazy"
-                /></noscript>
-                <picture
-                  class="render-image flex flex-align-center flex-justify-center picture-image-"
-                >
-                  <source
-                    type="image/png"
-                    data-srcset="https://pokieslab.net/wp-content/themes/pokieslab/img/dmca.png"
-                  />
-                  <img
-                    alt="dmca"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                    width="73"
-                    height="24"
-                    class="lazy"
-                    data-original="https://pokieslab.net/wp-content/themes/pokieslab/img/dmca.png"
-                  />
-                </picture>
-                <noscript
-                  ><img
-                    alt="dmca"
-                    src="https://pokieslab.net/wp-content/themes/pokieslab/img/dmca.png"
-                    width="73"
-                    height="24"
-                    class="lazy"
-                /></noscript>
-                <picture
-                  class="render-image flex flex-align-center flex-justify-center picture-image-"
-                >
-                  <source
-                    type="image/png"
-                    data-srcset="https://pokieslab.net/wp-content/themes/pokieslab/img/gpwa.png"
-                  />
-                  <img
-                    alt="gpwa"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                    width="55"
-                    height="24"
-                    class="lazy"
-                    data-original="https://pokieslab.net/wp-content/themes/pokieslab/img/gpwa.png"
-                  />
-                </picture>
-                <noscript
-                  ><img
-                    alt="gpwa"
-                    src="https://pokieslab.net/wp-content/themes/pokieslab/img/gpwa.png"
-                    width="55"
-                    height="24"
-                    class="lazy"
-                /></noscript>
+              <?php 
+                foreach($footer_images as $image ){
+                  ?>
+                    <picture
+                      class="render-image flex flex-align-center flex-justify-center picture-image-"
+                    >
+                      <source
+                        type="image/png"
+                        data-srcset="<?php echo $image['image']['url'] ?>"
+                      />
+                      <img
+                        alt="<?php echo $image['image']['alt'] ?>"
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+                        class="lazy"
+                        data-original="<?php echo $image['image']['url'] ?>"
+                      />
+                    </picture>
+                    <noscript
+                      ><img
+                        alt="<?php echo $image['image']['alt'] ?>"
+                        src="<?php echo $image['image']['url'] ?>"
+                        class="lazy"
+                    /></noscript>
+                  <?php
+                }
+              ?>
+                
+                
               </div>
             </div>
           </div>

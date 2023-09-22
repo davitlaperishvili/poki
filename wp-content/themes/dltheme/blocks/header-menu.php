@@ -1,22 +1,28 @@
-<div class="header-nav flex flex-align-stretch">
+<?php 
+  $phoneVisible = get_field('phone_number', 'option');
+  $phone = preg_replace("/[^0-9]/", "", $phoneVisible);
+  $email = get_field('email', 'option');
+  $site_logo = get_field('site_logo', 'option');
+?>
+<div class="header-nav flex flex-align-stretch" style="background-image: linear-gradient(90deg,var(--themeGradStart),var(--themeGradEnd));">
       <div class="container flex flex-align-stretch">
         <nav class="toolbar">
           <div
             class="toolbar__logo flex flex-align-center flex-justify-between"
           >
-            <a href="/" class="flex flex-align-center flex-justify-between">
+            <a href="<?php echo home_url() ?>" class="flex flex-align-center flex-justify-between">
               <picture
                 class="render-image flex flex-align-center flex-justify-center picture-image- toolbar__logotype"
               >
                 <source
                   type="image/svg+xml"
                   srcset="
-                    https://pokieslab.net/wp-content/uploads/pokieslab-white.svg
+                    <?php echo $site_logo['url'] ?>
                   "
                 />
                 <img
-                  alt="logo"
-                  src="https://pokieslab.net/wp-content/uploads/pokieslab-white.svg"
+                  alt="<?php echo $site_logo['alt'] ?>"
+                  src="<?php echo $site_logo['url'] ?>"
                   width="142"
                   height="31"
                   class="no-lazy toolbar__logotype"

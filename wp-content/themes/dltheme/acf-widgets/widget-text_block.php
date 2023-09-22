@@ -10,19 +10,19 @@
     
     <section class="best-slots text_block safe-slots" id="content<?php echo $rowIndex ?>">
       <div class="best-slots-background kangaroo-background">
-        <div class="best-slots-background-gradient kangaroo-background-gradient" style="background: linear-gradient(90deg,<?php echo $section_bg['gradient_start'] ? $section_bg['gradient_start'] : "#f5bf5d" ?>,<?php echo $section_bg['gradient_end'] ? $section_bg['gradient_end'] : "#e74c62" ?>)"></div>
-        <div class="best-slots-background-hills lazy kangaroo-background-hills" style="background-image: url(<?php echo $section_bg['bg_image'] && $section_bg['bg_image']['url'] || "" ?>);"></div>
+        <div class="best-slots-background-gradient kangaroo-background-gradient" style="background: linear-gradient(90deg,<?php echo $section_bg['gradient_start'] ? $section_bg['gradient_start'] : "var(--themeGradStart)" ?>,<?php echo $section_bg['gradient_end'] ? $section_bg['gradient_end'] : "var(--themeGradEnd)" ?>)"></div>
+        <div class="best-slots-background-hills lazy kangaroo-background-hills" style="background-image: url(<?php echo $section_bg['bg_image'] && $section_bg['bg_image']['url'] ? $section_bg['bg_image']['url'] : "" ?>);"></div>
         <?php 
           if(!$image_first){
             ?>
-              <div class="best-slots-background-image lazy" style="background-image: url(<?php echo $section_bg['main_image'] && $section_bg['main_image']['url'] || "" ?>);"></div>
+              <div class="best-slots-background-image lazy" style="background-image: url(<?php echo $section_bg['main_image'] && $section_bg['main_image']['url'] ? $section_bg['main_image']['url'] : "" ?>);"></div>
             <?php
           }
         ?>
       </div>
-      <div class="container safe-slots__container">
+      <div class="container safe-slots__container best-slots__container entered " style="background-image: url(<?php echo $section_bg['main_image'] && $section_bg['main_image']['url'] && $image_first ? $section_bg['main_image']['url'] : "" ?>);">
         <div class="row <?php echo $image_first ? "flex-justify-end" : " " ?>">
-          <div class="col-12 col-xl-7">
+          <div class="col-12 <?php echo !$image_first ? "col-xl-7" : "col-lg-8"  ?>">
             <h2 class="best-slots__title safe-slots__title"><?php echo $section_title ?></h2>
             <div class="best-slots__text  safe-slots__text"><?php echo $section_text ?></div>
           </div>
