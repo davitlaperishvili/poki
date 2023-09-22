@@ -120,7 +120,7 @@
           if($casinos_list_config['choose_casinos'] == "all"){
             $casinoPosts = get_posts( array(
               'numberposts' => -1,
-              'post_type'   => 'casinos',
+              'post_type'   => 'real-money-pokies',
               'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
             ) );
             

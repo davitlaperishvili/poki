@@ -11,7 +11,7 @@
           include(TEMPLATEPATH.'/acf-widgets/widget-hero.php');
         
         elseif( get_row_layout() == 'slots_list' ):
-          include(TEMPLATEPATH.'/acf-widgets/widget-slots_list.php');
+          include(TEMPLATEPATH.'/acf-widgets/widget-free_pokies_list.php');
         
         elseif( get_row_layout() == 'benefits_slider_1' ):
           include(TEMPLATEPATH.'/acf-widgets/widget-benefits_slider1.php');
@@ -20,7 +20,7 @@
           include(TEMPLATEPATH.'/acf-widgets/widget-benefits_slider2.php');
         
         elseif( get_row_layout() == 'casinos' ):
-          include(TEMPLATEPATH.'/acf-widgets/widget-casinos.php');
+          include(TEMPLATEPATH.'/acf-widgets/widget-real-money-pokies.php');
         
         elseif( get_row_layout() == 'faq' ):
           include(TEMPLATEPATH.'/acf-widgets/widget-faq.php');

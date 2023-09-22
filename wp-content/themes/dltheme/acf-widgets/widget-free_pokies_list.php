@@ -121,7 +121,7 @@
             if($slots_list_config['choose_slots'] == "all"){
               $slotsPosts = get_posts( array(
                 'numberposts' => 6,
-                'post_type'   => 'slots',
+                'post_type'   => 'free-pokies',
                 'suppress_filters' => true,
               ) );
               

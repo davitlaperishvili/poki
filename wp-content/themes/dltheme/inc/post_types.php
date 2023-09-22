@@ -1,53 +1,22 @@
 <?php
 
-// Slots post type
-function slots_post_type(){
-	register_post_type('slots', [
-		'label'  => null,
-		'labels' => [
-			'name'				=> 'Slots',
-			'singular_name'		=> 'Slot',
-			'add_new'			=> 'Add Slot',
-			'add_new_item'		=> 'Add Slot',
-			'edit_item'			=> 'Edit Slot',
-			'new_item'			=> 'New Slot',
-			'view_item'			=> 'Watch Slot',
-			'search_items'		=> 'Search Slot',
-			'not_found'			=> 'Not found',
-		],
-		'description'		=> 'Post for Slot',
-		'public'			=> true,
-		'show_in_menu'		=> true,
-		'show_in_rest'		=> true,
-		'rest_base'			=> true,
-		'menu_position'		=> true,
-		'menu_icon'			=> 'dashicons-megaphone',
-		'hierarchical'		=> true,
-		'supports'			=> ['title', 'thumbnail', 'editor'],
-		'taxonomies'		=> [],
-		'has_archive'		=> true,
-		'rewrite'			=> true,
-		'query_var'			=> true,
-	]);
-}
-add_action('init', 'slots_post_type');
 
-// Casinos post type
-function casinos_post_type(){
-	register_post_type('casinos', [
+// Free Pokies post type
+function free_pokies_post_type(){
+	register_post_type('free-pokies', [
 		'label'  => null,
 		'labels' => [
-			'name'				=> 'Casinos',
-			'singular_name'		=> 'Casino',
-			'add_new'			=> 'Add Casino',
-			'add_new_item'		=> 'Add Casino',
-			'edit_item'			=> 'Edit Casino',
-			'new_item'			=> 'New Casino',
-			'view_item'			=> 'Watch Casino',
-			'search_items'		=> 'Search Casino',
+			'name'				=> 'Free Pokies',
+			'singular_name'		=> 'Free Poki',
+			'add_new'			=> 'Add Free Poki',
+			'add_new_item'		=> 'Add Free Poki',
+			'edit_item'			=> 'Edit Free Poki',
+			'new_item'			=> 'New Free Poki',
+			'view_item'			=> 'Watch Free Poki',
+			'search_items'		=> 'Search Free Poki',
 			'not_found'			=> 'Not found',
 		],
-		'description'		=> 'Post for Casino',
+		'description'		=> 'Post for Free Poki',
 		'public'			=> true,
 		'show_in_menu'		=> true,
 		'show_in_rest'		=> true,
@@ -62,4 +31,36 @@ function casinos_post_type(){
 		'query_var'			=> true,
 	]);
 }
-add_action('init', 'casinos_post_type');
+add_action('init', 'free_pokies_post_type');
+
+// Real Money Poki post type
+function real_money_pokies_post_type(){
+	register_post_type('real-money-pokies', [
+		'label'  => null,
+		'labels' => [
+			'name'				=> 'Real Money Pokies',
+			'singular_name'		=> 'Real Money Poki',
+			'add_new'			=> 'Add Real Money Poki',
+			'add_new_item'		=> 'Add Real Money Poki',
+			'edit_item'			=> 'Edit Real Money Poki',
+			'new_item'			=> 'New Real Money Poki',
+			'view_item'			=> 'Watch Real Money Poki',
+			'search_items'		=> 'Search Real Money Poki',
+			'not_found'			=> 'Not found',
+		],
+		'description'		=> 'Post for Real Money Poki',
+		'public'			=> true,
+		'show_in_menu'		=> true,
+		'show_in_rest'		=> true,
+		'rest_base'			=> true,
+		'menu_position'		=> true,
+		'menu_icon'			=> 'dashicons-megaphone',
+		'hierarchical'		=> true,
+		'supports'			=> ['title', 'thumbnail', 'editor'],
+		'taxonomies'		=> [],
+		'has_archive'		=> true,
+		'rewrite'			=> true,
+		'query_var'			=> true,
+	]);
+}
+add_action('init', 'real_money_pokies_post_type');
