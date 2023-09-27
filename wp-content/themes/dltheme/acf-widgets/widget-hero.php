@@ -8,6 +8,8 @@
         $overlayNextBlock = get_sub_field('overlay_next_block');
         
         $rowIndex = get_row_index();
+
+
     ?>
     
     <section class="hero <?php echo $overlayNextBlock ? "" : "header-page" ?>" id="content<?php echo $rowIndex ?>" style="position: relative; z-index: -1;">
@@ -20,6 +22,9 @@
         </div>
         <div class="container header__conbest-online-pokiestainer">
           <div class="row">
+            
+            <?php custom_breadcrumbs() ?>
+           
             <div class="col-12 header__title">
               <h1 class="header__title">
                 <?php echo $heroTitle ?>

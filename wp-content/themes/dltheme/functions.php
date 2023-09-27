@@ -52,3 +52,103 @@ function webp_upload_mimes( $existing_mimes ) {
 	return $existing_mimes;
 }
 add_filter( 'mime_types', 'webp_upload_mimes' );
+add_filter( 'get_the_archive_title', 'modify_archive_title', 10, 1 );
+
+function custom_breadcrumbs() {
+  global $post;
+
+  if (!is_home() && !is_front_page()) {
+    echo '<div class="col-12 "><ul class="breadcrumbs flex flex-align-center flex-justify-start flex-wrap">';
+
+    // Home Link
+    echo '<li class="breadcrumbs-home">';
+    echo '<a href="' . get_option('home') . '" class="flex flex-align-center flex-justify-start">';
+    echo '<i class="fa-home"></i>';
+    echo '</a>';
+    echo '<span class="breadcrumbs-divider">/</span>';
+    echo '</li>';
+
+        if (is_category() || is_single()) {
+            $categories = get_the_category();
+            $cat_count = count($categories);
+            foreach ($categories as $key => $category) {
+                echo '<li>';
+                echo '<a href="' . get_category_link($category->term_id) . '">';
+                echo '<span>' . $category->name . '</span>';
+                echo '</a>';
+                if($key < $cat_count - 1 || is_single()) {
+                    echo '<span class="breadcrumbs-divider">/</span>';
+                }
+                echo '</li>';
+            }
+
+            if (is_single()) {
+                echo '<li>';
+                echo '<span>' . get_the_title() . '</span>';
+                echo '</li>';
+            }
+        } elseif (is_page()) {
+            if ($post->post_parent) {
+                $anc = get_post_ancestors($post->ID);
+                foreach ($anc as $ancestor) {
+                    echo '<li>';
+                    echo '<a href="' . get_permalink($ancestor) . '">';
+                    echo '<span>' . get_the_title($ancestor) . '</span>';
+                    echo '</a>';
+                    echo '<span class="breadcrumbs-divider">/</span>';
+                    echo '</li>';
+                }
+                echo '<li>';
+                echo '<span>' . get_the_title() . '</span>';
+                echo '</li>';
+            } else {
+                echo '<li>';
+                echo '<span>' . get_the_title() . '</span>';
+                echo '</li>';
+            }
+        }elseif (is_archive()){
+          $term = get_queried_object();
+          $name = $term->label ? $term->label : $term->name;
+          
+          echo '<li>';
+          echo '<span>' . $name . '</span>';
+          echo '</li>';
+        }
+
+    echo '</ul> </div>';
+  }
+}
+
+function renderACF() {
+  if( get_row_layout() == 'hero' ):
+    include(TEMPLATEPATH.'/acf-widgets/widget-hero.php');
+
+  elseif( get_row_layout() == 'casino_hero' ):
+    include(TEMPLATEPATH.'/acf-widgets/widget-casino-hero.php');
+  
+  elseif( get_row_layout() == 'slots_list' ):
+    include(TEMPLATEPATH.'/acf-widgets/widget-free_pokies_list.php');
+  
+  elseif( get_row_layout() == 'benefits_slider_1' ):
+    include(TEMPLATEPATH.'/acf-widgets/widget-benefits_slider1.php');
+  
+  elseif( get_row_layout() == 'benefits_slider_2' ):
+    include(TEMPLATEPATH.'/acf-widgets/widget-benefits_slider2.php');
+  
+  elseif( get_row_layout() == 'casinos' ):
+    include(TEMPLATEPATH.'/acf-widgets/widget-real-money-pokies.php');
+  
+  elseif( get_row_layout() == 'faq' ):
+    include(TEMPLATEPATH.'/acf-widgets/widget-faq.php');
+  
+  elseif( get_row_layout() == 'general_text' ):
+    include(TEMPLATEPATH.'/acf-widgets/widget-general_text.php');
+  
+  elseif( get_row_layout() == 'text_block' ):
+    include(TEMPLATEPATH.'/acf-widgets/widget-text_block.php');
+
+  elseif( get_row_layout() == 'review' ):
+    include(TEMPLATEPATH.'/acf-widgets/widget-review.php');
+
+  endif;
+}

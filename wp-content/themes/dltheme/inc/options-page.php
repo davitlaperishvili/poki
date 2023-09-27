@@ -16,4 +16,12 @@ if( function_exists('acf_add_options_page') ) {
 		'capability'	=> 'edit_posts',
 		'redirect'		=> false
 	));
+  acf_add_options_page(array(
+		'page_title' 	=> 'Free Pokies List',
+		'menu_title'	=> 'Free Pokies List',
+		'menu_slug' 	=> 'free_pokies_list',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false,
+    "position"    => 2
+	));
 }

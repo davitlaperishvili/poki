@@ -118,9 +118,20 @@
             <?php
           }
           if($casinos_list_config['choose_casinos'] == "all"){
+            $termQuery = "";
+            if($casinos_list_config['choose_category']){
+              $termQuery = array(
+                  array (
+                      'taxonomy' => 'deposite',
+                      'field' => 'id',
+                      'terms' => $casinos_list_config['choose_category']
+                  )
+              );
+            }
             $casinoPosts = get_posts( array(
               'numberposts' => -1,
-              'post_type'   => 'real-money-pokies',
+              'tax_query' => $termQuery,
+              'post_type'   => 'real-pokies',
               'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
             ) );
             

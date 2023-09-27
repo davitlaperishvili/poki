@@ -33,9 +33,45 @@ function free_pokies_post_type(){
 }
 add_action('init', 'free_pokies_post_type');
 
+add_action( 'init', 'create_provider_hierarchical_taxonomy', 0 );
+ 
+//create a custom taxonomy name it provider for your posts
+ 
+function create_provider_hierarchical_taxonomy() {
+ 
+// Add new taxonomy, make it hierarchical like categories
+//first do the translations part for GUI
+ 
+  $labels = array(
+    'name' => _x( 'Deposite', 'Pokies Provider' ),
+    'singular_name' => _x( 'Provider', 'Provider' ),
+    'search_items' =>  __( 'Search Provider' ),
+    'all_items' => __( 'All Deposite' ),
+    'parent_item' => __( 'Parent Provider' ),
+    'parent_item_colon' => __( 'Parent Provider:' ),
+    'edit_item' => __( 'Edit Provider' ), 
+    'update_item' => __( 'Update Provider' ),
+    'add_new_item' => __( 'Add New Provider' ),
+    'new_item_name' => __( 'New Provider Name' ),
+    'menu_name' => __( 'Provider' ),
+  );    
+ 
+// Now register the taxonomy
+ 
+  register_taxonomy('provider',array('free-pokies'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => true,
+  ));
+ 
+}
+
 // Real Money Poki post type
-function real_money_pokies_post_type(){
-	register_post_type('real-money-pokies', [
+function real_pokies_post_type(){
+	register_post_type('real-pokies', [
 		'label'  => null,
 		'labels' => [
 			'name'				=> 'Real Money Pokies',
@@ -63,4 +99,37 @@ function real_money_pokies_post_type(){
 		'query_var'			=> true,
 	]);
 }
-add_action('init', 'real_money_pokies_post_type');
+add_action('init', 'real_pokies_post_type');
+
+add_action( 'init', 'create_deposite_hierarchical_taxonomy', 0 );
+function create_deposite_hierarchical_taxonomy() {
+ 
+  // Add new taxonomy, make it hierarchical like categories
+  //first do the translations part for GUI
+   
+    $labels = array(
+      'name' => _x( 'Deposite', 'Pokies Deposite' ),
+      'singular_name' => _x( 'Deposite', 'Deposite' ),
+      'search_items' =>  __( 'Search Deposite' ),
+      'all_items' => __( 'All Deposite' ),
+      'parent_item' => __( 'Parent Deposite' ),
+      'parent_item_colon' => __( 'Parent Deposite:' ),
+      'edit_item' => __( 'Edit Deposite' ), 
+      'update_item' => __( 'Update Deposite' ),
+      'add_new_item' => __( 'Add New Deposite' ),
+      'new_item_name' => __( 'New Deposite Name' ),
+      'menu_name' => __( 'Deposite' ),
+    );    
+   
+  // Now register the taxonomy
+   
+    register_taxonomy('deposite',array('real-pokies'), array(
+      'hierarchical' => true,
+      'labels' => $labels,
+      'show_ui' => true,
+      'show_admin_column' => true,
+      'query_var' => true,
+      'rewrite' => true,
+    ));
+   
+  }
