@@ -150,5 +150,14 @@ function renderACF() {
   elseif( get_row_layout() == 'review' ):
     include(TEMPLATEPATH.'/acf-widgets/widget-review.php');
 
+  elseif( get_row_layout() == 'benefits' ):
+    include(TEMPLATEPATH.'/acf-widgets/widget-benefits.php');
+
+  elseif( get_row_layout() == 'bonus_features' ):
+    include(TEMPLATEPATH.'/acf-widgets/widget-bonus_features.php');
+
+  elseif( get_row_layout() == 'image_text' ):
+    include(TEMPLATEPATH.'/acf-widgets/widget-image_text.php');
+
   endif;
 }

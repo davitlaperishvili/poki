@@ -1052,3 +1052,208 @@ iframe {
   font-size: 20px;
   line-height: 33px
 }
+.how-to-pick-real-money-slot-with-our-reviews {
+  padding: 0 0 10px 0;
+  margin: 0 auto;
+  margin-bottom: 96px;
+  background: linear-gradient(105.9deg, #f7c85c 0, #e74762 100%);
+  background-repeat: no-repeat;
+  background-position: top 0 left 0;
+}
+.how-to-pick-real-money-slot-with-our-reviews__container {
+  max-width: 1200px;
+}
+.how-to-pick-real-money-slot-with-our-reviews__title {
+  margin-top: 40px;
+  font-style: normal;
+  font-weight: 700;
+  color: #fff;
+}
+.how-to-pick-real-money-slot-with-our-reviews-list__card {
+  margin: 0 auto 30px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  max-width: 370px;
+}
+.how-to-pick-real-money-slot-with-our-reviews-list__image {
+  margin-top: 29px;
+  margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  height: 120px;
+}
+.how-to-pick-real-money-slot-with-our-reviews-list__title {
+  padding-left: 32px;
+  padding-right: 32px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1a1a1a;
+}
+.how-to-pick-real-money-slot-with-our-reviews-list__text {
+  padding: 32px;
+  padding-top: 0;
+  margin-top: 16px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #616161;
+}
+@media screen and (max-width: 992px) {
+  .how-to-pick-real-money-slot-with-our-reviews {
+    background-size: 100% 80%;
+    background-repeat: no-repeat;
+    margin-bottom: 64px;
+  }
+  .how-to-pick-real-money-slot-with-our-reviews-list__card {
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+}
+.best-online-slots-for-real-money {
+  max-width: 1440px;
+  padding: 0 0;
+  margin: 0 auto;
+}
+.best-online-slots-for-real-money__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+.best-online-slots-for-real-money__title {
+  color: #1a1a1a;
+}
+.best-online-slots-for-real-money__text {
+  margin-top: 24px;
+  font-size: 16px !important;
+  color: #616161;
+}
+@media screen and (max-width: 992px) {
+  .best-online-slots-for-real-money__container {
+    margin: 0 auto;
+    margin-top: 24px;
+    margin-bottom: 64px;
+  }
+  .best-online-slots-for-real-money__text {
+    margin-top: 16px;
+  }
+}
+.real-money-bonuses-real-money-page {
+  padding: 0 0;
+  margin: 40px auto 0;
+  max-width: 1440px;
+  background: #f5f5f5;
+}
+.real-money-bonuses-real-money-page__container {
+  max-width: 1200px;
+  margin-top: 40px;
+  padding-bottom: 40px;
+}
+.real-money-bonuses-real-money-page__title {
+  font-style: normal;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-top: 65px;
+  margin-bottom: 16px;
+}
+.real-money-bonuses-real-money-page__card-wrapper:nth-child(2n-1) .real-money-bonuses-real-money-page-card {
+  transform: rotateY(180deg);
+}
+.real-money-bonuses-real-money-page__card-wrapper:nth-child(2n-1) .real-money-bonuses-real-money-page-card .real-money-bonuses-real-money-page-card__content {
+  display: flex;
+  flex-direction: column;
+}
+.real-money-bonuses-real-money-page__card-wrapper:nth-child(2n-1) .real-money-bonuses-real-money-page-card .real-money-bonuses-real-money-page-card__content .real-money-bonuses-real-money-page-card__title {
+  transform: rotateY(180deg);
+  order: 1;
+}
+.real-money-bonuses-real-money-page__card-wrapper:nth-child(2n-1) .real-money-bonuses-real-money-page-card .real-money-bonuses-real-money-page-card__content .real-money-bonuses-real-money-page-card__text {
+  transform: rotateY(180deg);
+  order: 2;
+}
+.real-money-bonuses-real-money-page-card {
+  margin: 0 auto 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  background: #f5b521;
+}
+.real-money-bonuses-real-money-page-card__title {
+  font-weight: 700;
+  color: #1a1a1a;
+  padding-top: 32px;
+  padding-left: 68px;
+}
+.real-money-bonuses-real-money-page-card__text {
+  color: #1a1a1a;
+  padding: 16px 100px 33px 68px;
+}
+@media screen and (max-width: 992px) {
+  .real-money-bonuses-real-money-page-card__text {
+    padding-right: 20px;
+  }
+}
+.real-money-bonuses-real-money-page-card__image {
+  margin: 45px;
+  max-width: 120px;
+  max-height: 120px;
+  width: 100%;
+}
+.real-money-bonuses-real-money-page-card__content {
+  clip-path: url(#how-we-rate-the-best-pokies-pc-background);
+  background: #fff;
+  border-radius: 14px;
+  height: 100%;
+  width: 100%;
+}
+.real-money-bonuses-real-money-page-card picture {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+@media screen and (max-width: 992px) {
+  .real-money-bonuses-real-money-page__title {
+    padding: 0;
+    margin: 0;
+    margin-top: 40px;
+  }
+  .real-money-bonuses-real-money-page-card {
+    max-width: 320px;
+    margin-top: 16px;
+    transform: none !important;
+    margin-top: 16px;
+    margin-bottom: 0;
+  }
+  .real-money-bonuses-real-money-page-card__title {
+    padding-top: 40px;
+    padding-left: 16px;
+  }
+  .real-money-bonuses-real-money-page-card__text {
+    padding-top: 16px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+  }
+  .real-money-bonuses-real-money-page-card__content {
+    clip-path: url(#how-we-rate-the-best-pokies-mobile-background);
+  }
+}
+@media screen and (max-width: 992px) and (max-width: 767px) {
+  .real-money-bonuses-real-money-page-card__content {
+    clip-path: none;
+  }
+}
+@media screen and (max-width: 992px) {
+  .real-money-bonuses-real-money-page-card__content .real-money-bonuses-real-money-page-card__title {
+    transform: none !important;
+  }
+  .real-money-bonuses-real-money-page-card__content .real-money-bonuses-real-money-page-card__text {
+    transform: none !important;
+  }
+}
