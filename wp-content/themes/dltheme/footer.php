@@ -223,7 +223,7 @@
           }
       })();
       var site_option = [],
-        ajaxactionurl = "admin-ajax",
+        ajaxactionurl = "/wp-admin/admin-ajax.php",
         transparent_pixel =
           "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
       (function () {

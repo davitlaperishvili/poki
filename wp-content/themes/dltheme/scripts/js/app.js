@@ -2660,7 +2660,7 @@ if (animate_element) {
               : this.config.destroyFunction.call(this);
         } else this.status = !1;
       }),
-      (this.prepareResponse = function (t) {
+      (this.prepareResponse = function (t) {  
         for (var e = 0; e < t.suggestions.length; e++)
           (t.suggestions[e].value = this.transformResult(
             t.suggestions[e].value

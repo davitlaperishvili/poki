@@ -18,6 +18,7 @@ $dl_includes = array(
 	'/menus.php',
 	'/options-page.php',
 	'/post_types.php',
+	'/ajax.php',
 );
 
 // Include files
