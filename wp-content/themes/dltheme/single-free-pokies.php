@@ -3,7 +3,10 @@
 ?>
 <?php get_header(); ?>
 
-
+<?php 
+  $pokiInfo = get_field("slot_info");
+  $term = get_queried_object(); 
+?>
   <section class="hero slots-page-header">
     <div class="header-bn">
       <div class="gradient">
@@ -45,13 +48,13 @@
             <div class="slot-background">
               <div class="slot-background-cover">
                 <picture class="render-image flex flex-align-center flex-justify-center picture-image-">
-                  <source type="image/webp" media="(max-width: 450px)" srcset="https://pokieslab.net/wp-content/uploads/image-webp/mustang-money-pokies-game-150x110.webp" />
-                  <source type="image/webp" media="(max-width: 767px)" srcset="https://pokieslab.net/wp-content/uploads/image-webp/mustang-money-pokies-game-510x394.webp" />
-                  <source type="image/webp" srcset="https://pokieslab.net/wp-content/uploads/image-webp/mustang-money-pokies-game-730x564.webp" />
-                  <source type="image/png" media="(max-width: 450px)" srcset="https://pokieslab.net/wp-content/uploads/mustang-money-pokies-game-150x110.png" />
-                  <source type="image/png" media="(max-width: 767px)" srcset="https://pokieslab.net/wp-content/uploads/mustang-money-pokies-game-510x394.png" />
-                  <source type="image/png" srcset="https://pokieslab.net/wp-content/uploads/mustang-money-pokies-game-730x564.png" />
-                  <img alt="Mustang Money Pokie" src="https://pokieslab.net/wp-content/uploads/mustang-money-pokies-game-730x564.png" width="143" height="29" class="no-lazy" />
+                  <source type="image/webp" media="(max-width: 450px)" srcset="<?php echo get_the_post_thumbnail_url() ?>" />
+                  <source type="image/webp" media="(max-width: 767px)" srcset="<?php echo get_the_post_thumbnail_url() ?>" />
+                  <source type="image/webp" srcset="<?php echo get_the_post_thumbnail_url() ?>" />
+                  <source type="image/png" media="(max-width: 450px)" srcset="<?php echo get_the_post_thumbnail_url() ?>" />
+                  <source type="image/png" media="(max-width: 767px)" srcset="<?php echo get_the_post_thumbnail_url() ?>" />
+                  <source type="image/png" srcset="<?php echo get_the_post_thumbnail_url() ?>" />
+                  <img alt="<?php the_title() ?>" src="<?php echo get_the_post_thumbnail_url() ?>" width="143" height="29" class="no-lazy" />
                 </picture>
               </div>
             </div>
@@ -71,12 +74,12 @@
                 </defs>
               </svg>
             </div>
-            <button id="slot__play-button" class="header__button button__primary-2 slot__button" data-iframe-link="https://demoportal.agtonline.com/ainsworthanywhere/GameLaunch/launchpage.aspx?ExtGameId=M6">Play Free</button>
+            <button id="slot__play-button" class="header__button button__primary-2 slot__button" data-iframe-link="<?php echo $pokiInfo['poki_iframe_link'] ?>">Play Free</button>
             <iframe id="slot__play-frame" class="slot__frame" frameborder="0"></iframe>
           </div>
           <button class="slot__play-button">
-            <a href="/go/richard-casino/" target="_blank" rel="nofollow noopener" style="display: flex; text-decoration: none; color: inherit; justify-content: center; align-items: center;">
-              PLAY FOR REAL MONEY WITH AU$5000 + 300 FREE SPINS
+            <a href="<?php echo $pokiInfo['poki_inside_button']['url'] ?>" target="_blank" rel="nofollow noopener" style="display: flex; text-decoration: none; color: inherit; justify-content: center; align-items: center;">
+              <?php echo $pokiInfo['poki_inside_button']['title'] ?>
             </a>
           </button>
         </div>
@@ -134,9 +137,9 @@
     </div>
   </div>
   <?php 
-    if( have_rows('sections') ):
+    if( have_rows('sections', $term) ):
       // Loop through rows.
-      while ( have_rows('sections') ) : the_row();
+      while ( have_rows('sections', $term) ) : the_row();
         // Case: Paragraph layout.
         renderACF();
       endwhile;

@@ -25,7 +25,7 @@
             
             <?php custom_breadcrumbs() ?>
            
-            <div class="col-12 header__title">
+            <div class="col-12 header__info">
               <h1 class="header__title">
                 <?php echo $heroTitle ?>
               </h1>

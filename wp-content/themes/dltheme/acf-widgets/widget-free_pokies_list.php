@@ -30,7 +30,7 @@
             </h3>
           </div>
           <?php 
-            if(is_post_type_archive("free-pokies")){
+            if(is_post_type_archive("free-pokies") || is_archive()){
               ?>
                 <div class="col-12">
                   <div class="sorting flex flex-justify-start flex-align-center flex-wrap sorting-coverage">
@@ -210,8 +210,8 @@
             if($slots_list_config['choose_slots'] == "all"){
               $slotsPosts = [];
               if($slots_list_config['paged_by'] != "ajax"){
-                $paged = (get_query_var('page')) ? get_query_var('page') : 1;
-                $slotArgs = array('post_type' => 'free-pokies', 'posts_per_page' => 12, 'paged' => $paged, 'tax_query' => $termQuery   );
+                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                $slotArgs = array('post_type' => 'free-pokies', 'posts_per_page' => 18, 'paged' => $paged, 'tax_query' => $termQuery   );
                 $post_type_data = new WP_Query($slotArgs);
                 $slotsPosts = $post_type_data->posts;
                 if($post_type_data->have_posts()): ?>
@@ -221,9 +221,9 @@
                 
                 
                 <?php else: ?>
-                  <p>No posts found.</p>
+                  
                 <?php endif;
-                set_query_var('page',$paged);
+                set_query_var('paged',$paged);
               }else{
                 $slotsPosts = get_posts( array(
                   'numberposts' => 6,
@@ -371,7 +371,7 @@
                         echo paginate_links( array(
                             'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
                             'total'        => $post_type_data->max_num_pages,
-                            'current'      => max( 1, get_query_var( 'page' ) ),
+                            'current'      => max( 1, get_query_var( 'paged' ) ),
                             'format'       => '',
                             'show_all'     => false,
                             'type'         => 'plain',
@@ -385,7 +385,7 @@
                         ) );
                       ?>
                     </div>
-                    <div class="total-post-count">Total <?php echo $post_type_data->max_num_pages ?> pokies</div>
+                    <div class="total-post-count">Total <?php echo count($slotsPosts) ?> pokies</div>
                   </div>
                 <?php
               }

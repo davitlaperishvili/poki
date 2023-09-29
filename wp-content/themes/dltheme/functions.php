@@ -20,7 +20,12 @@ $dl_includes = array(
 	'/post_types.php',
 	'/ajax.php',
 );
-
+function custom_posts_per_page_query( $query ) {
+  if ( $query->is_main_query() && !is_admin() && is_post_type_archive('free-pokies') ) {
+      $query->set('posts_per_page', '18'); // adjust this to your needs
+  }
+}
+add_action( 'pre_get_posts', 'custom_posts_per_page_query' );
 // Include files
 foreach($dl_includes as $file){
 	require_once $dl_inc_dir . $file;

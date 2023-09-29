@@ -1,5 +1,8 @@
 <?php
-
+function custom_rewrite_rule() {
+  add_rewrite_rule('^free-pokies/page/([0-9]+)/?$', 'index.php?post_type=free-pokies&paged=$matches[1]', 'top');
+}
+add_action('init', 'custom_rewrite_rule', 10, 0);
 
 // Free Pokies post type
 function free_pokies_post_type(){
@@ -28,7 +31,7 @@ function free_pokies_post_type(){
 		'taxonomies'		=> [],
 		'has_archive'		=> true,
 		'rewrite'			=> true,
-		'query_var'			=> true,
+		'query_var'			=> "free-pokies",
 	]);
 }
 add_action('init', 'free_pokies_post_type');
@@ -39,8 +42,8 @@ add_action( 'init', 'create_provider_hierarchical_taxonomy', 0 );
  
 function create_provider_hierarchical_taxonomy() {
  
-// Add new taxonomy, make it hierarchical like categories
-//first do the translations part for GUI
+  // Add new taxonomy, make it hierarchical like categories
+  //first do the translations part for GUI
  
   $labels = array(
     'name' => _x( 'Deposite', 'Pokies Provider' ),
@@ -56,7 +59,7 @@ function create_provider_hierarchical_taxonomy() {
     'menu_name' => __( 'Provider' ),
   );    
  
-// Now register the taxonomy
+  // Now register the taxonomy
  
   register_taxonomy('provider',array('free-pokies'), array(
     'hierarchical' => true,
