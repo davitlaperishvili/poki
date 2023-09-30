@@ -350,7 +350,7 @@
                     <button
                       class="button__secondary-1 js-load-more-slots"
                       data-load-more
-                      data-args='{"post_type":"post","post_status":"publish","post__in":[421,5134,415,487,386,376,133,412,136,365,318,370,530,360,5408,401,397,7452,526,3593,3410,838,407,5398],"orderby":"post__in","custom_posts_per_page":6,"paged":1}'
+                      data-args='{"post_type":"free-pokies","post_status":"publish","post__in":[421,5134,415,487,386,376,133,412,136,365,318,370,530,360,5408,401,397,7452,526,3593,3410,838,407,5398],"orderby":"post__in","custom_posts_per_page":6,"paged":1}'
                       data-insert-before=".best-online-pokies__more-slots"
                       data-current-page="1"
                       data-lazy="1"
