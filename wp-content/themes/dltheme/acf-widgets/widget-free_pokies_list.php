@@ -49,7 +49,7 @@
                       Popular
                     </div>
                     <script>
-                      var popularOrder = { post_type: "free-pokies", category__in: [1], post_status: "publish", meta_query: { order: { key: "order", type: "NUMERIC" } }, orderby: { order: "DESC", ID: "DESC" }, paged: 1 };
+                      var popularOrder = { post_type: "free-pokies", post_status: "publish", meta_query: { order: { key: "order", type: "NUMERIC" } }, orderby: { order: "DESC", ID: "DESC" }, paged: 1 };
                     </script>
                     <div
                       class="sorting-button flex flex-align-center flex-justify-center cursor-pointer"
@@ -65,7 +65,7 @@
                       New to Old
                     </div>
                     <script>
-                      var dateOrder = { post_type: "free-pokies", category__in: [1], post_status: "publish", meta_query: { order: { key: "order", type: "NUMERIC" } }, orderby: { date: "DESC", order: "DESC", ID: "DESC" }, paged: 1 };
+                      var dateOrder = { post_type: "free-pokies", post_status: "publish", meta_query: { order: { key: "order", type: "NUMERIC" } }, orderby: { date: "DESC", order: "DESC", ID: "DESC" }, paged: 1 };
                     </script>
                     <div
                       class="sorting-button flex flex-align-center flex-justify-center cursor-pointer"
@@ -81,7 +81,7 @@
                       A-Z
                     </div>
                     <script>
-                      var ascOrder = { post_type: "free-pokies", category__in: [1], post_status: "publish", meta_query: { order: { key: "order", type: "NUMERIC" } }, orderby: { title: "ASC", order: "DESC", ID: "DESC" }, paged: 1 };
+                      var ascOrder = { post_type: "free-pokies", post_status: "publish", meta_query: { order: { key: "order", type: "NUMERIC" } }, orderby: { title: "ASC", order: "DESC", ID: "DESC" }, paged: 1 };
                     </script>
                     <div
                       class="sorting-button flex flex-align-center flex-justify-center cursor-pointer"
@@ -97,7 +97,7 @@
                       Z-A
                     </div>
                     <script>
-                      var descOrder = { post_type: "free-pokies", category__in: [1], post_status: "publish", meta_query: { order: { key: "order", type: "NUMERIC" } }, orderby: { title: "DESC", order: "DESC", ID: "DESC" }, paged: 1 };
+                      var descOrder = { post_type: "free-pokies", post_status: "publish", meta_query: { order: { key: "order", type: "NUMERIC" } }, orderby: { title: "DESC", order: "DESC", ID: "DESC" }, paged: 1 };
                     </script>
                   </div>
                 </div>
@@ -108,7 +108,7 @@
           <?php 
             if($slots_list_config['choose_slots'] == "manual" && $slots_list){
               ?>
-                <div class="col-12 slots-items flex flex-align-stretch flex-justify-start flex-wrap" >
+                <div class="col-12 slots-items flex flex-align-stretch flex-justify-start flex-wrap " >
                   <?php 
                     foreach ($slots_list as $key => $slot) {
                       $slotID = $slot->ID;
@@ -216,7 +216,6 @@
                 $slotsPosts = $post_type_data->posts;
                 if($post_type_data->have_posts()): ?>
                   <?php while($post_type_data->have_posts()): $post_type_data->the_post(); ?>
-                    <!-- Your loop content goes here -->
                   <?php endwhile; ?>
                 
                 
@@ -236,7 +235,7 @@
               
               
               ?>
-                <div class="col-12 slots-items flex flex-align-stretch flex-justify-start flex-wrap" >
+                <div class="col-12 slots-items flex flex-align-stretch flex-justify-start flex-wrap slots-items-insert" >
                   <?php
                     foreach( $slotsPosts as $post ){
                       setup_postdata( $post );
@@ -333,64 +332,72 @@
                       <?php
                     }
                   ?>
+                  <?php 
+                    if($slots_list_config['choose_slots'] == "all"){
+                      if($slots_list_config['paged_by'] == "ajax"){
+                        ?>
+                          <div class="col-12 best-online-pokies__more-slots flex flex-justify-center" >
+                            <button
+                              class="button__secondary-1 js-load-more-slots"
+                              data-load-more
+                              data-args='{"post_type":"free-pokies","post_status":"publish","post__in":[421,5134,415,487,386,376,133,412,136,365,318,370,530,360,5408,401,397,7452,526,3593,3410,838,407,5398],"orderby":"post__in","custom_posts_per_page":6,"paged":1}'
+                              data-insert-before=".best-online-pokies__more-slots"
+                              data-current-page="1"
+                              data-lazy="1"
+                              data-template="slot-pattern"
+                              data-selector='[class~="game-item"]'
+                              data-max-pages="4"
+                              data-language="en"
+                            >
+                              <span>More slots</span>
+                            </button>
+                          </div>
+                        <?php
+                      }else{
+                        ?>
+                          <div class="pagination-wrapper ">
+                            <div class="wp-pagenavi">
+                              <?php 
+                                echo paginate_links( array(
+                                    'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+                                    'total'        => $post_type_data->max_num_pages,
+                                    'current'      => max( 1, get_query_var( 'paged' ) ),
+                                    'format'       => '',
+                                    'show_all'     => false,
+                                    'type'         => 'plain',
+                                    'end_size'     => null,
+                                    'mid_size'     => 1,
+                                    'prev_next'    => true,
+                                    'prev_text'    => __('&lt;'),
+                                    'next_text'    => __('&gt;'),
+                                    'add_args'     => false,
+                                    'add_fragment' => '',
+                                ) );
+                              ?>
+                            </div>
+                            <div class="total-post-count">Total <?php echo $post_type_data->found_posts ?> pokies</div>
+                          </div>
+                        <?php
+                      }
+                        
+                    }
+                  ?>
                 </div>
               <?php
-              
+              if(is_post_type_archive("free-pokies") || is_archive()){
+                ?>
+                  <div data-item-patter="" class="game-item"><div class="game-item-cover"> <a class="game-item-link" data-item-link=""><div class="game"> <img data-item-img="" class="lazy game__image" alt=""><div class="game__container"> <button class="button__primary-1 game__button"> <span style="display: flex;
+ text-decoration: none;
+ color: inherit;
+ justify-content: center;
+ align-items: center;" data-title="Play Free"></span> </button><div class="game__cutting-image-line"><div class="game__cutting-image-line-item"></div></div><div class="game__content"><p class="game__title" data-item-title=""></p></div></div></div> </a><div class="game__info"><div><p class="game__text">Reels</p><p class="game__text" data-item-reels=""></p></div><div><p class="game__text">Paylines</p><p class="game__text" data-item-paylines=""></p></div><div><p class="game__text">RTP</p><p class="game__text" data-item-rtp=""></p></div></div></div></div>
+                <?php
+              }
               wp_reset_postdata();
             }
           ?>
           <?php 
 
-          ?>
-          <?php 
-            if($slots_list_config['choose_slots'] == "all"){
-              if($slots_list_config['paged_by'] == "ajax"){
-                ?>
-                  <div class="col-12 best-online-pokies__more-slots flex flex-justify-center" >
-                    <button
-                      class="button__secondary-1 js-load-more-slots"
-                      data-load-more
-                      data-args='{"post_type":"free-pokies","post_status":"publish","post__in":[421,5134,415,487,386,376,133,412,136,365,318,370,530,360,5408,401,397,7452,526,3593,3410,838,407,5398],"orderby":"post__in","custom_posts_per_page":6,"paged":1}'
-                      data-insert-before=".best-online-pokies__more-slots"
-                      data-current-page="1"
-                      data-lazy="1"
-                      data-template="slot-pattern"
-                      data-selector='[class~="game-item"]'
-                      data-max-pages="4"
-                      data-language="en"
-                    >
-                      <span>More slots</span>
-                    </button>
-                  </div>
-                <?php
-              }else{
-                ?>
-                  <div class="pagination-wrapper ">
-                    <div class="wp-pagenavi">
-                      <?php 
-                        echo paginate_links( array(
-                            'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
-                            'total'        => $post_type_data->max_num_pages,
-                            'current'      => max( 1, get_query_var( 'paged' ) ),
-                            'format'       => '',
-                            'show_all'     => false,
-                            'type'         => 'plain',
-                            'end_size'     => null,
-                            'mid_size'     => 1,
-                            'prev_next'    => true,
-                            'prev_text'    => __('&lt;'),
-                            'next_text'    => __('&gt;'),
-                            'add_args'     => false,
-                            'add_fragment' => '',
-                        ) );
-                      ?>
-                    </div>
-                    <div class="total-post-count">Total <?php echo count($slotsPosts) ?> pokies</div>
-                  </div>
-                <?php
-              }
-                
-            }
           ?>
           
         </div>

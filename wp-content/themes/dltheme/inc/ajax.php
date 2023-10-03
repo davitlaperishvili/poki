@@ -274,3 +274,115 @@ function loadmore() {
   // wp_send_text($response);
     wp_die();
 }
+
+
+add_action('wp_ajax_sorting_slots', 'sorting_slots');
+add_action('wp_ajax_nopriv_sorting_slots', 'sorting_slots');
+
+function createItemData($postID) {
+  $slotInfo = get_field("slot_info",$postID);
+  $post_data = [
+    "title" => get_the_title($postID),
+    "link" => get_the_permalink($postID),
+    "img" => [
+      "webp" => [
+        [
+          "dimension" => null,
+          "type" => "image/webp",
+          "url" => get_the_post_thumbnail_url($postID)
+        ]
+      ],
+      "j2p" => [],
+      "default" => [
+        [
+          "dimension" => null,
+          "type" => "image/png",
+          "url" => get_the_post_thumbnail_url($postID)
+        ]
+      ]
+    ],
+    "reels" => $slotInfo['reels'],
+    "paylines" => $slotInfo['paylines'],
+    "rtp" => $slotInfo['rtp']
+  ];
+      
+  return $post_data;
+}
+function sorting_slots() {
+  $args = $_POST['args'];
+  $template = $_POST['template'];
+  // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+  $slotArgs = array('post_type' => 'free-pokies', 'posts_per_page' => -1, $args->orderby);
+  $post_type_data = new WP_Query($slotArgs);
+  $slotsPosts = $post_type_data->posts;
+  $items = array();
+    if ($post_type_data->have_posts()) {
+        while ($post_type_data->have_posts()) {
+            $post_type_data->the_post();
+            $id = get_the_ID();
+            array_push($items, createItemData($id));
+        }
+    }
+  $result = [
+    "itemsTotal" => "Total $post_type_data->found_posts pokies",
+    "foundPosts" => $post_type_data->found_posts,
+    "maxPage" => ceil($post_type_data->found_posts / 18),
+    "postPerPage" => 18,
+    "step" => 3,
+    "nextMark" => ">",
+    "prevMark" => "<",
+    "args" => $args,
+    "items" => $items
+  ];
+  // Return the JSON response
+  // echo $result;
+  // var_dump($posts);
+ wp_send_json($result);
+  wp_die();
+}
+
+// {
+//   "itemsTotal":"Total 200 pokies",
+//   "foundPosts":200,"maxPage":12,
+//   "postPerPage":18,"step":3,
+//   "nextMark":">",
+//   "prevMark":"<",
+//   "args":
+//     {"post_type":"post",
+//       "category__in":[1],
+//       "post_status":"publish",
+//       "meta_query":
+//         {"order":
+//           {"key":"order",
+//             "type":"NUMERIC"
+//           }
+//         },
+//       "orderby":
+//         {"order":"DESC",
+//           "ID":"DESC"
+//         },
+//       "paged ":1
+//     },
+//   "items":[
+//     {
+//       "title":"Lightning Link",
+//       "link":"https:\/\/pokieslab.net\/free-online-pokies\/lightning-link\/",
+//       "img":{"webp":[
+//           {
+//             "dimension":null,
+//             "type":"image\/webp",
+//             "url":"\/wp-content\/uploads\/image-webp\/Lightning-link-pokie-machines-360x271.webp"
+//           }
+//         ],
+//         "j2p":[],
+//         "default":[
+//           {"dimension":null,
+//             "type":"image\/png",
+//             "url":"https:\/\/pokieslab.net\/wp-content\/uploads\/Lightning-link-pokie-machines-360x271.png"}]
+//           },
+//           "reels ":false,
+//           "paylines ":false,
+//           "rtp ":false
+//     }
+//   ]
+// }
