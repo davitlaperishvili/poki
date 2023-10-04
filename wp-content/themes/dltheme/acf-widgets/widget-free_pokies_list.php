@@ -49,7 +49,7 @@
                       Popular
                     </div>
                     <script>
-                      var popularOrder = { post_type: "free-pokies", post_status: "publish", meta_query: { order: { key: "order", type: "NUMERIC" } }, orderby: { order: "DESC", ID: "DESC" }, paged: 1 };
+                      var popularOrder = { category__in: "<?php echo $termQuery && $term->term_taxonomy_id ? $term->term_taxonomy_id : ""  ?>" , orderby: { order: "DESC", ID: "DESC" } };
                     </script>
                     <div
                       class="sorting-button flex flex-align-center flex-justify-center cursor-pointer"
@@ -65,7 +65,7 @@
                       New to Old
                     </div>
                     <script>
-                      var dateOrder = { post_type: "free-pokies", post_status: "publish", meta_query: { order: { key: "order", type: "NUMERIC" } }, orderby: { date: "DESC", order: "DESC", ID: "DESC" }, paged: 1 };
+                      var dateOrder = { category__in: "<?php echo $termQuery && $term->term_taxonomy_id ? $term->term_taxonomy_id : ""  ?>" , orderby: { date: "DESC", order: "DESC", ID: "DESC" }};
                     </script>
                     <div
                       class="sorting-button flex flex-align-center flex-justify-center cursor-pointer"
@@ -81,7 +81,7 @@
                       A-Z
                     </div>
                     <script>
-                      var ascOrder = { post_type: "free-pokies", post_status: "publish", meta_query: { order: { key: "order", type: "NUMERIC" } }, orderby: { title: "ASC", order: "DESC", ID: "DESC" }, paged: 1 };
+                      var ascOrder = {category__in: "<?php echo $termQuery && $term->term_taxonomy_id ? $term->term_taxonomy_id : ""  ?>" , orderby: { title: "ASC", order: "ASC", ID: "ASC" }};
                     </script>
                     <div
                       class="sorting-button flex flex-align-center flex-justify-center cursor-pointer"
@@ -97,7 +97,7 @@
                       Z-A
                     </div>
                     <script>
-                      var descOrder = { post_type: "free-pokies", post_status: "publish", meta_query: { order: { key: "order", type: "NUMERIC" } }, orderby: { title: "DESC", order: "DESC", ID: "DESC" }, paged: 1 };
+                      var descOrder = {category__in: "<?php echo $termQuery && $term->term_taxonomy_id ? $term->term_taxonomy_id : ""  ?>" , orderby: { title: "DESC", order: "DESC", ID: "DESC" }};
                     </script>
                   </div>
                 </div>
@@ -365,7 +365,7 @@
                                     'format'       => '',
                                     'show_all'     => false,
                                     'type'         => 'plain',
-                                    'end_size'     => null,
+                                    'end_size'     => "",
                                     'mid_size'     => 1,
                                     'prev_next'    => true,
                                     'prev_text'    => __('&lt;'),
@@ -386,11 +386,34 @@
               <?php
               if(is_post_type_archive("free-pokies") || is_archive()){
                 ?>
-                  <div data-item-patter="" class="game-item"><div class="game-item-cover"> <a class="game-item-link" data-item-link=""><div class="game"> <img data-item-img="" class="lazy game__image" alt=""><div class="game__container"> <button class="button__primary-1 game__button"> <span style="display: flex;
- text-decoration: none;
- color: inherit;
- justify-content: center;
- align-items: center;" data-title="Play Free"></span> </button><div class="game__cutting-image-line"><div class="game__cutting-image-line-item"></div></div><div class="game__content"><p class="game__title" data-item-title=""></p></div></div></div> </a><div class="game__info"><div><p class="game__text">Reels</p><p class="game__text" data-item-reels=""></p></div><div><p class="game__text">Paylines</p><p class="game__text" data-item-paylines=""></p></div><div><p class="game__text">RTP</p><p class="game__text" data-item-rtp=""></p></div></div></div></div>
+                  <div data-item-patter="" class="game-item">
+                    <div class="game-item-cover">
+                      <a class="game-item-link" data-item-link="">
+                        <div class="game">
+                          <img data-item-img="" class="lazy game__image" alt="" />
+                          <div class="game__container">
+                            <button class="button__primary-1 game__button"><span style="display: flex; text-decoration: none; color: inherit; justify-content: center; align-items: center;" data-title="Play Free"></span></button>
+                            <div class="game__cutting-image-line"><div class="game__cutting-image-line-item"></div></div>
+                            <div class="game__content"><p class="game__title" data-item-title=""></p></div>
+                          </div>
+                        </div>
+                      </a>
+                      <div class="game__info">
+                        <div>
+                          <p class="game__text">Reels</p>
+                          <p class="game__text" data-item-reels=""></p>
+                        </div>
+                        <div>
+                          <p class="game__text">Paylines</p>
+                          <p class="game__text" data-item-paylines=""></p>
+                        </div>
+                        <div>
+                          <p class="game__text">RTP</p>
+                          <p class="game__text" data-item-rtp=""></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 <?php
               }
               wp_reset_postdata();

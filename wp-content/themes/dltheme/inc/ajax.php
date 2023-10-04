@@ -309,10 +309,22 @@ function createItemData($postID) {
   return $post_data;
 }
 function sorting_slots() {
-  $args = $_POST['args'];
   $template = $_POST['template'];
-  // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-  $slotArgs = array('post_type' => 'free-pokies', 'posts_per_page' => -1, $args->orderby);
+  $data = json_decode(stripslashes($_POST['args']));
+  $cat = $data->category__in && array('cat' => $data->category__in);
+  $termQuery = "";
+  if($data->category__in){
+    $termQuery = array(
+        array (
+            'taxonomy' => 'provider',
+            'field' => 'id',
+            'terms' => $data->category__in
+        )
+    );
+  }
+  // var_dump($data) ;
+  $orderData = $data->orderby->date ? "date" : "title";
+  $slotArgs = array('post_type' => "free-pokies", 'tax_query' => $termQuery ,  'posts_per_page' => -1, "order" => $data->orderby->order ,"orderby" => "$orderData");
   $post_type_data = new WP_Query($slotArgs);
   $slotsPosts = $post_type_data->posts;
   $items = array();
@@ -331,7 +343,7 @@ function sorting_slots() {
     "step" => 3,
     "nextMark" => ">",
     "prevMark" => "<",
-    "args" => $args,
+    "args" => $slotArgs,
     "items" => $items
   ];
   // Return the JSON response

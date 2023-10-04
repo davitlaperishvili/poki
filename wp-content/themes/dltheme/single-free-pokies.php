@@ -1,6 +1,3 @@
-<?php 
- // Template Name: Game
-?>
 <?php get_header(); ?>
 
 <?php 
